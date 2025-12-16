@@ -144,7 +144,7 @@ humanize_format(301); // "301st"
 ## 16. Truncar com Reticências
 
 ```js
-text_truncate("We are doing JS string exercises.", 19);
+text_truncate("We are doing JS string exercises.", 16);
 // "We are doing JS ..."
 ```
 
