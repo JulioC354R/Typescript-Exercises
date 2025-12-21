@@ -8,7 +8,6 @@ function checkIsBase2(num: number) {
     if (quotient % 2 != 0) return false;
     quotient = quotient / 2;
   }
-
   return true;
 }
 
