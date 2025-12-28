@@ -1,33 +1,31 @@
-// **Requisitos:** Deve ter métodos `start()`, `stop()`, `reset()` e uma propriedade `duration`.
+/*
+Requisitos: Deve ter métodos `start()`, `stop()`, `reset()` e uma propriedade `duration`.
 
-// - **Regras:** Não pode chamar start duas vezes seguidas (erro), nem stop duas vezes. `duration` não deve ser alterável manualmente de fora.
-
+ **Regras:** Não pode chamar start duas vezes seguidas (erro), nem stop duas vezes. `duration` não deve ser alterável manualmente de fora.
+*/
 class StopWatch {
-  duration: number;
-  start: Function;
-  stop: Function;
-  reset: Function;
+  private _duration: number = 0;
+  private _startTime: number = 0;
 
-  constructor() {
-    this.duration = 0;
-    let startTime = 0;
+  get duration(): number {
+    return this._duration;
+  }
 
-    this.start = function () {
-      if (startTime !== 0)
-        throw new Error('The stop watch has already been started!');
-      this.duration = 0;
-      startTime = Date.now();
-    };
-    this.stop = function () {
-      if (startTime === 0)
-        throw new Error('The stop watch has not been started!');
-      this.duration = (Date.now() - startTime) / 1000;
-      startTime = 0;
-    };
-    this.reset = function () {
-      this.duration = 0;
-      startTime = 0;
-    };
+  start() {
+    if (this._startTime !== 0)
+      throw new Error('The stop watch has already been started!');
+    this._duration = 0;
+    this._startTime = Date.now();
+  }
+  stop() {
+    if (this._startTime === 0)
+      throw new Error('The stop watch has not been started!');
+    this._duration = (Date.now() - this._startTime) / 1000;
+    this._startTime = 0;
+  }
+  reset() {
+    this._duration = 0;
+    this._startTime = 0;
   }
 }
 
